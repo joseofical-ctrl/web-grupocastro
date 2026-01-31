@@ -1,0 +1,113 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Heroslider from '../components/Heroslider.astro';
+import Planes from '../components/Planes.astro';
+import Condiciones from '../components/Condiciones.astro';
+import Seguridad from '../components/Camarasmarcas.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Grupo Castro">
+  <header class="relative w-full z-50 bg-[#009ee3] shadow-md">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="/" class="hover:scale-105 transition-transform duration-300">
+        <img src="/imagenes/logo_admin.png" class="h-14 md:h-20 drop-shadow-md" alt="Logo Grupo Castro" />
+      </a>
+      <div class="flex gap-3">
+        <a href="https://www.facebook.com/people/Grupo-Castro/61579818473585/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-[#1877F2] hover:scale-110 transition-all border border-white/10 shadow-sm">
+          <i class="fab fa-facebook-f text-sm"></i>
+        </a>
+        <a href="https://www.instagram.com/nilhardsoft" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-gradient-to-tr from-yellow-400 via-pink-600 to-purple-600 hover:scale-110 transition-all border border-white/10 shadow-sm">
+          <i class="fab fa-instagram text-sm"></i>
+        </a>
+        <a href="https://www.youtube.com/@hikvision_huancayo" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-[#FF0000] hover:scale-110 transition-all border border-white/10 shadow-sm">
+          <i class="fab fa-youtube text-sm"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <a href="https://equipos.grupocastro.org/" target="_blank" rel="noopener noreferrer" id="sticky-cart" class="fixed left-0 top-1/2 -translate-y-1/2 z-[60] bg-slate-900 text-white flex items-center px-4 py-4 rounded-r-2xl shadow-2xl transition-all duration-500 border-y border-r border-white/10 overflow-hidden">
+    <div class="flex flex-col items-center min-w-[50px]">
+      <i class="fas fa-shopping-cart text-xl transition-transform text-[#009ee3]" id="cart-icon"></i>
+      <span class="text-[7px] font-black uppercase mt-1">Market</span>
+    </div>
+    <div id="cart-content" class="flex flex-col max-w-0 opacity-0 transition-all duration-500 ease-in-out whitespace-nowrap overflow-hidden">
+      <div class="flex flex-col border-l border-white/20 ml-4 pl-4">
+        <span class="text-[10px] font-bold leading-none text-blue-200">VISITA NUESTRA</span>
+        <span class="text-xs font-black uppercase tracking-tighter">TIENDA VIRTUAL</span>
+      </div>
+    </div>
+  </a>
+
+  <div class="fixed bottom-8 right-8 z-[60] group">
+    <div class="absolute inset-0 bg-[#25D366] rounded-full animate-ping opacity-20"></div>
+    
+    <a 
+      href="https://wa.me/51993996443?text=Hola%20Grupo%20Castro,%20deseo%20realizar%20una%20consulta." 
+      target="_blank" 
+      rel="noopener noreferrer"
+      class="relative flex items-center justify-center w-16 h-16 bg-[#25D366] text-white rounded-full shadow-[0_10px_30px_rgba(37,211,102,0.4)] hover:scale-110 transition-all duration-300"
+    >
+      <i class="fab fa-whatsapp text-3xl"></i>
+      
+      <span class="absolute right-20 bg-white text-slate-900 text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-xl shadow-xl border border-slate-100 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+        ¿En qué podemos ayudarte?
+      </span>
+    </a>
+  </div>
+
+  <main>
+    <Heroslider />
+    <Planes />
+    <Condiciones />
+    <Seguridad />
+  </main>
+
+  <Footer />
+
+</Layout>
+
+<script>
+  // LÓGICA DEL MARKET LATERAL (Mantenida)
+  const cartLink = document.getElementById('sticky-cart');
+  const cartContent = document.getElementById('cart-content');
+  const cartIcon = document.getElementById('cart-icon');
+  let closeTimeout: number;
+
+  if (cartLink && cartContent) {
+    cartLink.addEventListener('mouseenter', () => {
+      clearTimeout(closeTimeout);
+      cartContent.style.maxWidth = '250px';
+      cartContent.style.opacity = '1';
+      if (cartIcon) cartIcon.style.transform = 'rotate(12deg) scale(1.1)';
+    });
+
+    cartLink.addEventListener('mouseleave', () => {
+      closeTimeout = window.setTimeout(() => {
+        cartContent.style.maxWidth = '0';
+        cartContent.style.opacity = '0';
+        if (cartIcon) cartIcon.style.transform = 'rotate(0deg) scale(1)';
+      }, 1000);
+    });
+  }
+</script>
+
+<style>
+  #cart-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Animación personalizada para el ping si no usas Tailwind completo */
+  @keyframes ping {
+    75%, 100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+  .animate-ping {
+    animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+</style>
