@@ -9,7 +9,6 @@ const slides = [
       { text: "Instale el Starlink en solo dos pasos.", color: "bg-orange-600", icon: "fas fa-rocket" }
     ],
     image: "/imagenes/internet_hibrido.png",
-    // Fondo azul marino profundo para Starlink
     bgGradient: "from-slate-950 via-slate-900 to-blue-950"
   },
   {
@@ -21,7 +20,6 @@ const slides = [
       { text: "Asesoría experta para seguridad residencial e industrial.", color: "bg-red-600", icon: "fas fa-shield-alt" }
     ],
     image: "/imagenes/hikvision_huancayo.png",
-    // Fondo gris industrial para Hikvision
     bgGradient: "from-zinc-900 via-zinc-800 to-black"
   },
   {
@@ -46,7 +44,7 @@ const slides = [
       class={`slide absolute inset-0 transition-all duration-1000 flex items-center bg-gradient-to-br ${slide.bgGradient} ${index === 0 ? 'opacity-100 z-10 active' : 'opacity-0 z-0'}`}
     >
       <div class="container mx-auto px-6 relative z-20 flex flex-col md:flex-row items-center py-12">
-        <div class="md:w-3/5 text-white slide-text transform -translate-x-24 opacity-0 transition-all duration-1000 delay-300">
+        <div class="w-full md:w-3/5 text-white slide-text transform -translate-x-24 opacity-0 transition-all duration-1000 delay-300">
           <h1 class="text-3xl md:text-5xl font-black mb-6 leading-tight uppercase drop-shadow-2xl" set:html={slide.title}></h1>
           <p class="text-xl mb-10 italic font-medium text-blue-100" set:html={slide.subtitle}></p>
           
@@ -78,15 +76,15 @@ const slides = [
           </div>
 
           <div class="flex flex-wrap gap-4">
-  <a href="https://wa.me/51993996443" 
-     target="_blank" 
-     class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-md font-black flex items-center gap-2 shadow-xl transition-all hover:-translate-y-1 text-sm uppercase no-underline">
-    Más Información
-  </a>
-</div>
+            <a href="https://wa.me/51993996443" 
+               target="_blank" 
+               class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-md font-black flex items-center gap-2 shadow-xl transition-all hover:-translate-y-1 text-sm uppercase no-underline">
+              Más Información
+            </a>
+          </div>
         </div>
 
-        <div class="md:w-2/5 mt-10 md:mt-0 flex justify-center slide-image transform translate-x-24 opacity-0 transition-all duration-1000 delay-500">
+        <div class="hidden md:flex md:w-2/5 mt-10 md:mt-0 justify-center slide-image transform translate-x-24 opacity-0 transition-all duration-1000 delay-500">
           <img src={slide.image} class="max-w-full h-auto drop-shadow-[0_35px_35px_rgba(0,0,0,0.5)] animate-float" />
         </div>
       </div>
